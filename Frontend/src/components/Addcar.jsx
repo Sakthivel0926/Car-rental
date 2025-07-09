@@ -51,7 +51,7 @@ const Addcar = ({ onCarAdded }) => {
       bookedDates: [] // Ensure new cars start with empty bookedDates
     };
     try {
-      const res = await fetch("http://localhost:5000/api/cars", {
+      const res = await fetch("https://car-rental-2-w085.onrender.com/api/cars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(carData)

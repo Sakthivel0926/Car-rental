@@ -12,7 +12,7 @@ const SettingsPage = ({ onLogout }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:5000/api/logout', {
+      await fetch('https://car-rental-2-w085.onrender.com/api/logout', {
         method: 'POST',
         credentials: 'include',
       });
@@ -25,7 +25,7 @@ const SettingsPage = ({ onLogout }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/user/me', {
+        const res = await fetch('https://car-rental-2-w085.onrender.com/api/user/me', {
           credentials: 'include',
         });
         if (!res.ok) {
@@ -167,7 +167,7 @@ const SettingsPage = ({ onLogout }) => {
             setLoading(true);
             setFetchError("");
             try {
-              const res = await fetch('http://localhost:5000/api/user/me', {
+              const res = await fetch('https://car-rental-2-w085.onrender.com/api/user/me', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

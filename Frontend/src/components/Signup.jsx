@@ -33,7 +33,7 @@ const Signup = ({ onSignup }) => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/api/signup", {
+      const res = await fetch("https://car-rental-2-w085.onrender.com/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: form.name, email: form.email, password: form.password, phone: form.phone }),
