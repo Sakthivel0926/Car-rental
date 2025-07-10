@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Car, Mail, Lock, User, Eye, EyeOff } from "lucide-react";
+import { Car, Mail, Lock, User, Eye, EyeOff, phone} from "lucide-react";
 
 const Signup = ({ onSignup }) => {
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const Signup = ({ onSignup }) => {
             <div className="relative">
               <label className="block text-sm font-medium text-blue-200 mb-2">Phone Number</label>
               <div className="relative">
-                <User size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300" />
+                <phone size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300" />
                 <input
                   name="phone"
                   type="text"
