@@ -36,7 +36,7 @@ const Signup = ({ onSignup }) => {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/signup", {
+    const res = await fetch("https://car-rental-7-5f1j.onrender.com/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ const Signup = ({ onSignup }) => {
       setMessage("Welcome aboard! Account created successfully!");
 
       // 🔐 Immediately log the user in after successful signup
-      const loginRes = await fetch("http://localhost:5000/api/login", {
+      const loginRes = await fetch("https://car-rental-7-5f1j.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

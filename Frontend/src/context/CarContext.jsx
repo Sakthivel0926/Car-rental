@@ -12,7 +12,7 @@ export const CarProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/cars")
+    fetch("https://car-rental-7-5f1j.onrender.com/api/cars")
     .then(res => res.json())
     .then(data => setCars(data))
     .catch(() => setCars([]));

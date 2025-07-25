@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SettingsPage = ({ onLogout }) => {
 
-  
+
   const [user, setUser] = useState(null);
   const [language, setLanguage] = useState('english');
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ const SettingsPage = ({ onLogout }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:5000/api/user/me', {
+      await fetch('https://car-rental-7-5f1j.onrender.com/api/user/me', {
         method: 'POST',
         credentials: 'include',
       });
@@ -27,7 +27,7 @@ const SettingsPage = ({ onLogout }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/user/me', {
+        const res = await fetch('https://car-rental-7-5f1j.onrender.com/api/user/me', {
           credentials: 'include',
         });
         if (!res.ok) {
@@ -169,7 +169,7 @@ const SettingsPage = ({ onLogout }) => {
             setLoading(true);
             setFetchError("");
             try {
-              const res = await fetch('http://localhost:5000/api/user/me', {
+              const res = await fetch('https://car-rental-7-5f1j.onrender.com/api/user/me', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
