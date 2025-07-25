@@ -11,6 +11,8 @@ const bookingRoutes = require('./routes/bookingRoutes');
 
 const PORT = process.env.PORT || 5000;
 
+
+
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','https://car-rental-7-5f1j.onrender.com','https://car-rental-c6jw.vercel.app'];
 
 app.use(cors({
@@ -44,23 +46,41 @@ app.use(express.json());
 //   }
 // }));
 
+// const MongoStore = require('connect-mongo');
+
+// app.use(session({
+//   secret: 'your_secret_key',
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({
+//     mongoUrl: process.env.MONGO_URI || 'mongodb://localhost:27017/car-rental-sessions',
+//     ttl: 14 * 24 * 60 * 60, // Optional: session lifetime in seconds (14 days)
+//   }),
+//   cookie: {
+//     secure: true,           // false for HTTP, true for HTTPS
+//     sameSite: 'none',         // 'none' only needed for cross-site HTTPS
+//     httpOnly: true
+//   }
+// }));
+
 const MongoStore = require('connect-mongo');
 
 app.use(session({
-  secret: 'your_secret_key',
+  secret: process.env.SESSION_SECRET || 'your_secret_key',
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI || 'mongodb://localhost:27017/car-rental-sessions',
-    ttl: 14 * 24 * 60 * 60, // Optional: session lifetime in seconds (14 days)
+    mongoUrl: process.env.MONGO_URI, // your MongoDB connection string
   }),
   cookie: {
-    secure: true,           // false for HTTP, true for HTTPS
-    sameSite: 'none',         // 'none' only needed for cross-site HTTPS
-    httpOnly: true
+    secure: process.env.NODE_ENV === 'production',           // ✅ must be true in production
+    sameSite: 'none',       // ✅ allows cross-origin session
+    httpOnly: true,
   }
 }));
 
+
+app.set('trust proxy', 1); // ✅ Required for Render or other cloud hosting
 
 
 dbConfig();
