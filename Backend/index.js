@@ -10,9 +10,20 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','*'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','https://car-rental-7-5f1j.onrender.com'];
+// app.use(cors({
+//   origin: function(origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -22,13 +33,25 @@ app.use(cors({
   credentials: true
 }));
 
+
 app.use(express.json());
+// app.use(session({
+//   secret: 'your_secret_key', // Change this to a strong secret in production!
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: { secure: false } // Set to true if using HTTPS
+// }));
+
 app.use(session({
-  secret: 'your_secret_key', // Change this to a strong secret in production!
+  secret: 'your_secret_key',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // Set to true if using HTTPS
+  cookie: {
+    secure: true,         // ✅ REQUIRED for HTTPS (Render is HTTPS)
+    sameSite: 'none',     // ✅ REQUIRED for cross-site cookies
+  }
 }));
+
 
 dbConfig();
 
