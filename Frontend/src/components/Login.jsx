@@ -38,6 +38,7 @@ const Login = ({ onLogin, onShowSignup }) => {
     }
   } catch (err) {
     setMessage("Network error.");
+    console.log(err);
     setLoading(false);
   }
 };
