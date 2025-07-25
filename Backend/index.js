@@ -65,8 +65,8 @@ app.use(session({
     ttl: 14 * 24 * 60 * 60, // Optional: session lifetime in seconds (14 days)
   }),
   cookie: {
-    secure: false,           // false for HTTP, true for HTTPS
-    sameSite: 'lax',         // 'none' only needed for cross-site HTTPS
+    secure: true,           // false for HTTP, true for HTTPS
+    sameSite: 'none',         // 'none' only needed for cross-site HTTPS
     httpOnly: true
   }
 }));
