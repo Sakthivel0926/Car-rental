@@ -11,17 +11,7 @@ const bookingRoutes = require('./routes/bookingRoutes');
 
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','https://car-rental-7-5f1j.onrender.com'];
-// app.use(cors({
-//   origin: function(origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true
-// }));
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','https://car-rental-7-5f1j.onrender.com','https://car-rental-c6jw.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
