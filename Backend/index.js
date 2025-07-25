@@ -70,7 +70,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI, // your MongoDB connection string
+    mongoUrl: process.env.MONGODB_URI, // your MongoDB connection string
   }),
   cookie: {
     secure: process.env.NODE_ENV === 'production',           // ✅ must be true in production
